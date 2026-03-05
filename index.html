@@ -179,6 +179,36 @@
     }
     .foot a{color:var(--muted)}
     .foot a:hover{color:var(--text); text-decoration:underline; text-underline-offset:3px}
+    .phone {
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 22px 70px rgba(0,0,0,.45);
+  overflow: hidden;
+  position: relative;
+}
+
+.phone::before{
+  content:"";
+  position:absolute;
+  top:10px; left:50%;
+  transform:translateX(-50%);
+  width: 120px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.10);
+  z-index: 2;
+}
+
+.phone img{
+  display:block;
+  width:100%;
+  height:auto;
+}
   </style>
 </head>
 
