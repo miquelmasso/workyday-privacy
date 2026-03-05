@@ -1,7 +1,86 @@
-<h1>Support</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — WorkyDay</title>
+  <meta name="description" content="Support page for WorkyDay." />
+  <style>
+    :root{--bg:#0b1220;--text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.68);--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--accent:#4ea3ff;--max:920px;--r:18px;--font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--font);color:var(--text);line-height:1.6;background:radial-gradient(1000px 600px at 15% 10%, rgba(78,163,255,.18), transparent 60%),radial-gradient(900px 650px at 90% 15%, rgba(88,240,194,.12), transparent 55%),var(--bg);}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline;text-underline-offset:3px}
+    header{border-bottom:1px solid rgba(255,255,255,.08);background:rgba(11,18,32,.72);backdrop-filter:blur(10px);position:sticky;top:0}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700}
+    .logo{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg, rgba(78,163,255,.9), rgba(88,240,194,.85))}
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    nav a{color:var(--muted)} nav a:hover{color:var(--text)}
+    .card{margin-top:20px;padding:20px;border-radius:var(--r);border:1px solid rgba(255,255,255,.10);background:var(--card)}
+    h1{margin:0 0 6px;font-size:34px;letter-spacing:-.4px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+    h2{margin:18px 0 8px;font-size:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);font-weight:700}
+    .btn:hover{background:rgba(255,255,255,.09)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:760px){.grid{grid-template-columns:1fr}}
+    .box{padding:14px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.04)}
+    code{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:8px}
+    footer{margin:22px 0 30px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="brand" href="/"><span class="logo" aria-hidden="true"></span>WorkyDay</a>
+    <nav aria-label="Navigation">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/support/">Support</a>
+      <a href="/delete-account/">Delete account</a>
+    </nav>
+  </div>
+</header>
 
-<p>If you need help with WorkyDay please contact:</p>
+<main class="wrap">
+  <div class="card">
+    <h1>Support</h1>
+    <div class="meta">Need help with WorkyDay? Contact us and we’ll get back to you.</div>
 
-<p>Email: workyday.app@gmail.com</p>
+    <p>
+      Email: <a href="mailto:workyday.app@gmail.com">workyday.app@gmail.com</a>
+    </p>
 
-<p>We usually respond within 48 hours.</p>
+    <p>
+      When you email us, include:
+      <code>your device</code>, <code>iOS/Android version</code>, and a brief description of the issue.
+    </p>
+
+    <div class="grid" style="margin-top:14px">
+      <div class="box">
+        <h2 style="margin:0 0 8px">Report a bug</h2>
+        <p style="margin:0;color:rgba(255,255,255,.70)">
+          Tell us what happened, what you expected, and steps to reproduce.
+        </p>
+      </div>
+      <div class="box">
+        <h2 style="margin:0 0 8px">Data / account requests</h2>
+        <p style="margin:0;color:rgba(255,255,255,.70)">
+          If you want data deletion, use the page below.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+      <a class="btn" href="mailto:workyday.app@gmail.com?subject=WorkyDay%20Support">Email support</a>
+      <a class="btn" href="/delete-account/">Delete account / data</a>
+    </div>
+  </div>
+
+  <footer>
+    <div>Related: <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></div>
+  </footer>
+</main>
+</body>
+</html>
