@@ -3,421 +3,975 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="WorkyDay helps Working Holiday makers find jobs and workplaces across Australia." />
-  <title>WorkyDay – Find jobs across Australia for Working Holiday Visa</title>
-  <meta name="description" content="WorkyDay helps Working Holiday Visa travellers find jobs, workplaces and opportunities across Australia.">
-  <meta property="og:title" content="WorkyDay – Find jobs across Australia">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://workyday.com">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/favicon.png">
+  <title>WorkyDay Australia – Working Holiday Jobs App</title>
+  <meta
+    name="description"
+    content="WorkyDay Australia helps Working Holiday Visa travellers find jobs, workplaces and useful guidance across Australia."
+  />
+  <meta property="og:title" content="WorkyDay Australia – Working Holiday Jobs App" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://workyday.com" />
+  <meta
+    property="og:description"
+    content="Find jobs, workplaces and guidance for your Working Holiday journey in Australia."
+  />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/favicon.png" />
 
   <style>
     :root{
-      --bg: #0b1220;
-      --card: rgba(255,255,255,.06);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --line: rgba(255,255,255,.12);
-      --accent: #4ea3ff;
-      --accent2:#58f0c2;
-      --shadow: 0 18px 60px rgba(0,0,0,.40);
-      --radius: 18px;
-      --max: 1040px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --bg:#f4f5f8;
+      --surface:#eef0f6;
+      --surface-2:#ffffff;
+      --text:#1f2b4a;
+      --muted:#7c86a5;
+      --line:#e3e6ef;
+      --accent:#6f7cff;
+      --accent-2:#68d49b;
+      --shadow:0 18px 50px rgba(30,42,74,.10);
+      --shadow-soft:0 10px 30px rgba(30,42,74,.08);
+      --radius-xl:40px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --max:1520px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Roboto, Helvetica, Arial, sans-serif;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family:var(--font);
       color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 18% 12%, rgba(78,163,255,.22), transparent 60%),
-        radial-gradient(900px 600px at 88% 22%, rgba(88,240,194,.18), transparent 55%),
-        radial-gradient(900px 700px at 55% 100%, rgba(255,255,255,.08), transparent 55%),
-        var(--bg);
-      line-height:1.55;
+      background:var(--bg);
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
-    a{color:inherit; text-decoration:none}
-    a.under{color:var(--accent); text-decoration:underline; text-underline-offset:3px}
+    img{ max-width:100%; display:block; }
+    a{ color:inherit; text-decoration:none; }
 
-    .wrap{
+    .page{
       max-width:var(--max);
       margin:0 auto;
-      padding:24px;
+      padding:14px 18px 28px;
     }
 
-    header{
-      position:sticky;
-      top:0;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(to bottom, rgba(11,18,32,.82), rgba(11,18,32,.35));
-      border-bottom:1px solid rgba(255,255,255,.06);
-      z-index:10;
-    }
-
-    .nav{
+    /* NAV */
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
-      padding:14px 24px;
-      max-width:var(--max);
-      margin:0 auto;
+      gap:18px;
+      padding:4px 4px 18px;
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      min-width:0;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       font-weight:700;
-      letter-spacing:.2px;
+      color:var(--accent-2);
+      white-space:nowrap;
     }
 
-    .logo{
-      width:36px;
-      height:36px;
-      border-radius:12px;
-      background: linear-gradient(135deg, rgba(78,163,255,.9), rgba(88,240,194,.85));
-      box-shadow: 0 12px 30px rgba(78,163,255,.18);
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      background:linear-gradient(135deg, #7adf93 0%, #52c878 100%);
+      position:relative;
+      box-shadow:var(--shadow-soft);
+      flex:0 0 auto;
     }
 
-    .navlinks{
+    .brand-mark::before,
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border:2px solid rgba(255,255,255,.95);
+      border-radius:50%;
+    }
+
+    .brand-mark::after{
+      inset:18px 8px;
+      border-radius:999px;
+      transform:rotate(-30deg);
+      border-width:2px;
+    }
+
+    .brand-name{
+      font-size:16px;
+      letter-spacing:.1px;
+    }
+
+    .nav{
       display:flex;
-      gap:14px;
+      align-items:center;
+      gap:26px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      font-size:15px;
+      color:var(--muted);
+      transition:color .18s ease, opacity .18s ease;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
 
-    .navlinks a{
-      padding:8px 12px;
-      border:1px solid transparent;
-      border-radius:999px;
-      color:var(--muted);
-      transition:.18s ease;
-    }
-
-    .navlinks a:hover{
-      border-color:var(--line);
-      color:var(--text);
-      background:rgba(255,255,255,.04);
-    }
-
-    .hero{
-      padding:44px 0 14px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
-      align-items:center;
-    }
-
-    @media (max-width: 920px){
-      .hero{
-        grid-template-columns:1fr;
-        padding-top:28px;
-      }
-    }
-
-    .badge{
+    .lang{
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      gap:8px;
       padding:10px 14px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      background: rgba(255,255,255,.04);
+      border-radius:16px;
+      background:#ffffff;
       color:var(--muted);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
       font-size:14px;
-      width:max-content;
     }
 
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:99px;
-      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.1));
-      box-shadow: 0 0 0 6px rgba(78,163,255,.12);
+    /* HERO */
+    .hero-shell{
+      background:var(--surface);
+      border-radius:var(--radius-xl);
+      min-height:760px;
+      position:relative;
+      overflow:hidden;
+      padding:64px 58px 56px;
+      display:grid;
+      grid-template-columns:minmax(380px, 560px) 1fr;
+      align-items:center;
+      gap:20px;
+    }
+
+    .hero-left{
+      position:relative;
+      z-index:2;
+      max-width:560px;
+      padding-top:32px;
+    }
+
+    .award{
+      width:72px;
+      height:96px;
+      background:linear-gradient(180deg, #7787ff 0%, #6372f0 100%);
+      color:#fff;
+      border-radius:0 0 8px 8px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
+      font-weight:700;
+      box-shadow:var(--shadow-soft);
+      margin-bottom:34px;
+      clip-path:polygon(0 0,100% 0,100% 82%,50% 100%,0 82%);
+    }
+
+    .award span:first-child{
+      font-size:15px;
+      line-height:1;
+    }
+
+    .award span:last-child{
+      font-size:12px;
+      line-height:1.15;
+      text-align:center;
+      font-weight:600;
+      opacity:.95;
+      max-width:52px;
     }
 
     h1{
-      margin:12px 0 10px;
-      font-size:52px;
-      line-height:1.05;
-      letter-spacing:-.6px;
+      margin:0 0 18px;
+      font-size:72px;
+      line-height:1.02;
+      letter-spacing:-1.8px;
+      font-weight:800;
+      max-width:700px;
     }
 
-    @media (max-width:520px){
-      h1{font-size:40px}
+    h1 .accent{
+      color:var(--accent);
     }
 
-    p.lead{
-      margin:0;
+    .lead{
+      margin:0 0 34px;
       color:var(--muted);
       font-size:18px;
-      max-width:60ch;
+      line-height:1.6;
+      max-width:520px;
     }
 
-    .ctaRow{
+    .store-buttons{
       display:flex;
-      gap:12px;
+      align-items:center;
+      gap:16px;
       flex-wrap:wrap;
-      margin-top:18px;
+      margin-bottom:26px;
     }
 
-    .btn{
+    .store-badge{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 10px 35px rgba(0,0,0,.22);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      font-weight:600;
+      min-width:180px;
+      height:54px;
+      padding:0 18px;
+      border-radius:12px;
+      background:#111;
+      color:#fff;
+      border:1px solid rgba(0,0,0,.18);
+      box-shadow:var(--shadow-soft);
+      font-weight:700;
+      font-size:15px;
+      transition:transform .16s ease, opacity .16s ease;
     }
 
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.18);
+    .store-badge:hover{
+      transform:translateY(-1px);
+      opacity:.92;
     }
 
-    .btn.primary{
-      border-color: rgba(78,163,255,.35);
-      background: linear-gradient(135deg, rgba(78,163,255,.28), rgba(88,240,194,.16));
-    }
-
-    .small{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:10px;
-    }
-
-    .card{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .mock{
-      padding:18px;
-      min-height:320px;
+    .hero-links{
       display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .mockTop{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-    }
-
-    .pill{
-      padding:7px 10px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-      background: rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-
-    @media (max-width:920px){
-      .grid{grid-template-columns:1fr}
-    }
-
-    .feat{padding:16px}
-
-    .feat h3{
-      margin:0 0 6px;
-      font-size:18px;
-    }
-
-    .feat p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    footer{
-      margin-top:34px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:var(--muted);
-    }
-
-    .foot{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      gap:18px;
       flex-wrap:wrap;
-      padding:18px 0 26px;
+      align-items:center;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    .foot a{color:var(--muted)}
+    .hero-links a{
+      color:var(--muted);
+    }
 
-    .foot a:hover{
+    .hero-links a:hover{
       color:var(--text);
       text-decoration:underline;
       text-underline-offset:3px;
     }
 
-    .phone{
-      width:100%;
-      max-width:280px;
-      margin:0 auto;
-      border-radius:34px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 22px 70px rgba(0,0,0,.45);
-      overflow:hidden;
+    /* PHONES */
+    .hero-right{
       position:relative;
-      padding-top:34px;
+      min-height:640px;
+    }
+
+    .phone{
+      position:absolute;
+      width:290px;
+      border-radius:40px;
+      background:#111;
+      padding:10px;
+      box-shadow:0 24px 60px rgba(22,31,56,.18);
     }
 
     .phone::before{
       content:"";
       position:absolute;
-      top:10px;
+      top:14px;
       left:50%;
       transform:translateX(-50%);
-      width:120px;
-      height:18px;
+      width:104px;
+      height:20px;
       border-radius:999px;
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
-      z-index:2;
+      background:#111827;
+      z-index:3;
     }
 
-    .phone img{
-      display:block;
+    .phone-screen{
+      border-radius:30px;
+      overflow:hidden;
+      background:#fff;
+      position:relative;
+      aspect-ratio:9 / 19.5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .phone-screen img{
       width:100%;
-      height:auto;
-      object-fit:contain;
+      height:100%;
+      object-fit:cover;
     }
 
-    @media (max-width:920px){
-      .phone{
-        max-width:260px;
-      }
+    .phone-a{
+      top:-10px;
+      right:310px;
+      transform:rotate(18deg);
+      width:270px;
     }
 
-    @media (max-width:520px){
-      .phone{
-        max-width:220px;
-      }
+    .phone-b{
+      top:120px;
+      right:30px;
+      width:300px;
+      transform:rotate(11deg);
+    }
 
-      .mock{
+    .phone-c{
+      top:300px;
+      right:390px;
+      transform:rotate(-16deg);
+      width:280px;
+    }
+
+    .phone-d{
+      top:-40px;
+      right:0;
+      transform:rotate(8deg);
+      width:250px;
+    }
+
+    /* custom lightweight screen placeholders */
+    .screen-map{
+      width:100%;
+      height:100%;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(116,170,255,.18), transparent 28%),
+        linear-gradient(180deg, #f7f5ef 0%, #f7f5ef 100%);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-map .roads,
+    .screen-map .roads::before,
+    .screen-map .roads::after{
+      content:"";
+      position:absolute;
+      inset:auto;
+      background:#d6d2c7;
+      border-radius:999px;
+    }
+
+    .screen-map .roads{
+      width:140%;
+      height:22px;
+      left:-14%;
+      top:42%;
+      transform:rotate(12deg);
+    }
+
+    .screen-map .roads::before{
+      width:18px;
+      height:150%;
+      left:46%;
+      top:-180px;
+      transform:rotate(10deg);
+    }
+
+    .screen-map .roads::after{
+      width:120%;
+      height:16px;
+      left:-10%;
+      top:120px;
+      transform:rotate(-20deg);
+    }
+
+    .screen-map .river{
+      position:absolute;
+      width:150%;
+      height:74px;
+      left:-18%;
+      top:14%;
+      background:#cfe1ff;
+      border-radius:999px;
+      transform:rotate(-15deg);
+    }
+
+    .screen-map .marker{
+      position:absolute;
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:#ff8d2b;
+      box-shadow:0 0 0 4px rgba(255,141,43,.18);
+    }
+
+    .screen-map .marker.m1{ top:34%; left:38%; }
+    .screen-map .marker.m2{ top:42%; left:48%; }
+    .screen-map .marker.m3{ top:54%; left:34%; }
+    .screen-map .marker.m4{ top:58%; left:56%; }
+    .screen-map .marker.m5{ top:70%; left:47%; }
+
+    .screen-route{
+      width:100%;
+      height:100%;
+      background:#f7f5ef;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-route .route{
+      position:absolute;
+      left:22%;
+      top:18%;
+      width:46%;
+      height:56%;
+      border:10px solid transparent;
+      border-left-color:#5c7cff;
+      border-bottom-color:#5c7cff;
+      border-radius:50px;
+      transform:rotate(18deg);
+    }
+
+    .screen-route .panel{
+      position:absolute;
+      left:8%;
+      right:8%;
+      bottom:8%;
+      background:#fff;
+      border-radius:22px;
+      box-shadow:var(--shadow-soft);
+      padding:14px;
+    }
+
+    .screen-route .line{
+      height:12px;
+      border-radius:999px;
+      background:#ebedf5;
+      margin-bottom:10px;
+    }
+
+    .screen-route .line.small{ width:56%; }
+    .screen-route .line.red{
+      background:#f25f5c;
+      height:46px;
+      margin-top:12px;
+    }
+
+    .screen-card{
+      width:100%;
+      height:100%;
+      background:#f3f5fb;
+      position:relative;
+      padding:20px;
+    }
+
+    .screen-card .image{
+      height:42%;
+      border-radius:22px;
+      background:linear-gradient(135deg, #88c3ff 0%, #4cc58a 100%);
+      margin-bottom:16px;
+    }
+
+    .screen-card .l1,
+    .screen-card .l2,
+    .screen-card .l3{
+      height:14px;
+      border-radius:999px;
+      background:#dde3f2;
+      margin-bottom:10px;
+    }
+
+    .screen-card .l1{ width:74%; }
+    .screen-card .l2{ width:88%; }
+    .screen-card .l3{ width:52%; }
+    .screen-card .cta{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:24px;
+      height:48px;
+      border-radius:14px;
+      background:#6f7cff;
+    }
+
+    .screen-guides{
+      width:100%;
+      height:100%;
+      background:#eef1f8;
+      padding:16px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      align-content:start;
+    }
+
+    .screen-guides .g{
+      border-radius:22px;
+      background:linear-gradient(135deg, #a8b3c9 0%, #6f7cff 100%);
+      min-height:112px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .screen-guides .g:nth-child(2){
+      background:linear-gradient(135deg, #f0b05f 0%, #d96d5d 100%);
+    }
+
+    .screen-guides .g:nth-child(3){
+      background:linear-gradient(135deg, #77bf9b 0%, #4e85ff 100%);
+    }
+
+    .screen-guides .g::after{
+      content:"";
+      position:absolute;
+      left:14px;
+      right:34px;
+      bottom:16px;
+      height:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.65);
+    }
+
+    .screen-guides .g::before{
+      content:"";
+      position:absolute;
+      left:14px;
+      width:50%;
+      top:16px;
+      height:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.85);
+    }
+
+    /* FEATURES */
+    .features{
+      padding:28px 6px 4px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .feature-card{
+      background:transparent;
+      padding:0 8px;
+    }
+
+    .feature-card h3{
+      margin:0 0 10px;
+      font-size:38px;
+      line-height:1.06;
+      letter-spacing:-.8px;
+      font-weight:800;
+      max-width:260px;
+    }
+
+    .feature-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+      max-width:360px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:64px 4px 12px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .footer-left,
+    .footer-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-right a,
+    .footer-left a{
+      color:var(--muted);
+    }
+
+    .footer-right a:hover,
+    .footer-left a:hover{
+      color:var(--text);
+    }
+
+    .sep{
+      opacity:.35;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1300px){
+      .hero-shell{
+        grid-template-columns:1fr;
         min-height:auto;
+        padding:48px 34px 42px;
+      }
+
+      .hero-left{
+        max-width:none;
+        padding-top:0;
+      }
+
+      .hero-right{
+        min-height:760px;
+      }
+
+      .phone-a{ right:300px; top:20px; }
+      .phone-b{ right:20px; top:160px; }
+      .phone-c{ right:420px; top:360px; }
+      .phone-d{ right:40px; top:-10px; }
+    }
+
+    @media (max-width: 1024px){
+      h1{
+        font-size:56px;
+      }
+
+      .features{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .feature-card h3{
+        max-width:none;
+      }
+
+      .hero-right{
+        min-height:700px;
+      }
+
+      .phone-a{ width:220px; right:230px; }
+      .phone-b{ width:248px; }
+      .phone-c{ width:230px; right:330px; }
+      .phone-d{ width:210px; }
+    }
+
+    @media (max-width: 760px){
+      .page{
+        padding:10px 10px 22px;
+      }
+
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        padding-bottom:14px;
+      }
+
+      .topbar-left,
+      .topbar-right{
+        width:100%;
+      }
+
+      .topbar-left{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+      }
+
+      .nav{
+        gap:18px;
+      }
+
+      .hero-shell{
+        padding:30px 20px 30px;
+        border-radius:28px;
+      }
+
+      .award{
+        margin-bottom:24px;
+      }
+
+      h1{
+        font-size:42px;
+        letter-spacing:-1.1px;
+      }
+
+      .lead{
+        font-size:16px;
+      }
+
+      .store-badge{
+        width:100%;
+        min-width:0;
+      }
+
+      .hero-right{
+        min-height:520px;
+        margin-top:10px;
+      }
+
+      .phone{
+        border-radius:28px;
+        padding:8px;
+      }
+
+      .phone::before{
+        width:84px;
+        height:16px;
+        top:10px;
+      }
+
+      .phone-a{
+        width:160px;
+        top:20px;
+        right:140px;
+      }
+
+      .phone-b{
+        width:180px;
+        top:120px;
+        right:10px;
+      }
+
+      .phone-c{
+        width:165px;
+        top:285px;
+        right:210px;
+      }
+
+      .phone-d{
+        width:150px;
+        top:-6px;
+        right:0;
+      }
+
+      .footer-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 520px){
+      .hero-right{
+        min-height:440px;
+      }
+
+      .phone-a{
+        width:130px;
+        right:110px;
+      }
+
+      .phone-b{
+        width:148px;
+      }
+
+      .phone-c{
+        width:136px;
+        right:165px;
+        top:240px;
+      }
+
+      .phone-d{
+        width:120px;
+      }
+
+      .feature-card h3{
+        font-size:30px;
       }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="/">
-        <span class="logo" aria-hidden="true"></span>
-        <span>WorkyDay</span>
-      </a>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-left">
+        <a class="brand" href="/" aria-label="WorkyDay home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">WorkyDay</span>
+        </a>
 
-      <nav class="navlinks" aria-label="Main navigation">
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="/support/">Support</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section class="hero">
-      <div>
-        <div class="badge">
-          <span class="dot" aria-hidden="true"></span>
-          Built for Working Holiday makers in Australia
-        </div>
-
-        <h1>Find jobs across Australia — faster.</h1>
-
-        <p class="lead">
-          WorkyDay helps you discover workplaces and nearby hospitality jobs, plus guidance for your WHV journey.
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="#" aria-label="Download on the App Store">Download on App Store</a>
-          <a class="btn" href="#" aria-label="Get it on Google Play">Get it on Google Play</a>
-        </div>
-
-        <div class="small">
-          Questions? <a class="under" href="/support/">Contact support</a>
-        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About app</a>
+          <a href="#contacts">Contacts</a>
+        </nav>
       </div>
 
-      <aside class="card mock" aria-label="Preview card">
-        <div class="mockTop">
-          <span class="pill">Map + Places</span>
-          <span class="pill">Offline-friendly</span>
+      <div class="topbar-right">
+        <a class="lang" href="/" aria-label="Language selector">
+          <span aria-hidden="true">🌐</span>
+          <span>En</span>
+          <span aria-hidden="true">⌄</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-shell" id="about">
+        <div class="hero-left">
+          <div class="award" aria-hidden="true">
+            <span>WHV</span>
+            <span>Jobs in Australia</span>
+          </div>
+
+          <h1>
+            <span class="accent">WorkyDay</span> — jobs,
+            map and guidance for your
+            Working Holiday in Australia
+          </h1>
+
+          <p class="lead">
+            Discover workplaces, nearby hospitality opportunities and useful contacts across
+            Australia. WorkyDay helps Working Holiday travellers find jobs faster and keep their
+            journey simple.
+          </p>
+
+          <div class="store-buttons">
+            <a
+              class="store-badge"
+              href="https://apps.apple.com/es/app/workyday/id6759898869?l=en-GB"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download WorkyDay on the App Store"
+            >
+              Download on the App Store
+            </a>
+
+            <a
+              class="store-badge"
+              href="https://play.google.com/store/apps/details?id=com.workyday.mywhv"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get WorkyDay on Google Play"
+            >
+              Get it on Google Play
+            </a>
+          </div>
+
+          <div class="hero-links" id="contacts">
+            <a href="https://www.instagram.com/anmaiki1/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@anmaiki" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="https://www.youtube.com/@anmaiki1" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
         </div>
 
-        <div class="phone" aria-label="WorkyDay app screenshot">
-          <img src="/assets/app-screenshot.png" alt="WorkyDay app preview" loading="lazy">
+        <div class="hero-right" aria-label="App previews">
+          <div class="phone phone-a" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="screen-map">
+                <div class="river"></div>
+                <div class="roads"></div>
+                <span class="marker m1"></span>
+                <span class="marker m2"></span>
+                <span class="marker m3"></span>
+                <span class="marker m4"></span>
+                <span class="marker m5"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone phone-b" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="screen-card">
+                <div class="image"></div>
+                <div class="l1"></div>
+                <div class="l2"></div>
+                <div class="l3"></div>
+                <div class="cta"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone phone-c" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="screen-route">
+                <div class="route"></div>
+                <div class="panel">
+                  <div class="line"></div>
+                  <div class="line small"></div>
+                  <div class="line red"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone phone-d" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="screen-guides">
+                <div class="g"></div>
+                <div class="g"></div>
+                <div class="g"></div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="mockTop">
-          <span class="pill">Jobs near you</span>
-          <span class="pill">88 days guide</span>
-        </div>
-      </aside>
-    </section>
+      <section class="features" aria-label="App features">
+        <article class="feature-card">
+          <h3>Find jobs faster</h3>
+          <p>
+            Explore workplaces and useful opportunities across Australia in one place, built for
+            Working Holiday travellers.
+          </p>
+        </article>
 
-    <section class="grid" aria-label="Features">
-      <div class="card feat">
-        <h3>Explore workplaces</h3>
-        <p>Browse locations and useful contact info to reach out quickly.</p>
-      </div>
+        <article class="feature-card">
+          <h3>Map + places</h3>
+          <p>
+            Check locations visually, discover nearby places and make it easier to plan where to go
+            next.
+          </p>
+        </article>
 
-      <div class="card feat">
-        <h3>Find hospitality jobs</h3>
-        <p>Spot opportunities nearby and keep track of options.</p>
-      </div>
-
-      <div class="card feat">
-        <h3>WHV guidance</h3>
-        <p>Learn how to plan your 88 days and understand key steps.</p>
-      </div>
-    </section>
+        <article class="feature-card">
+          <h3>Guidance for WHV</h3>
+          <p>
+            Keep practical information close while travelling, working and organising your journey
+            around Australia.
+          </p>
+        </article>
+      </section>
+    </main>
 
     <footer>
-      <div class="foot">
-        <div>© <span id="y"></span> WorkyDay</div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-          <a href="/support/">Support</a>
+      <div class="footer-row">
+        <div class="footer-left">
+          <span>© <span id="year"></span> All Right Reserved | WorkyDay Australia</span>
+          <span class="sep">•</span>
+          <a href="/privacy/">Privacy Policy</a>
+          <span class="sep">•</span>
+          <a href="/terms/">Terms of Service</a>
+        </div>
+
+        <div class="footer-right">
+          <a href="https://www.instagram.com/anmaiki1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            Instagram
+          </a>
+          <a href="https://www.tiktok.com/@anmaiki" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            TikTok
+          </a>
+          <a href="https://www.youtube.com/@anmaiki1" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            YouTube
+          </a>
         </div>
       </div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
